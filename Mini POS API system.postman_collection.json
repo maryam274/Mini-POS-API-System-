@@ -73,14 +73,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/auth/users",
+							"raw": "http://localhost:5000/auth/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
-								"api",
 								"auth",
 								"users"
 							]

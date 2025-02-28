@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const JWT_SECRET = "cghgedkejg";
 
 //  Register a new user
 router.post("/register", async (req, res) => {
@@ -45,7 +46,7 @@ router.post("/login", async (req, res) => {
         if (!isMatch)
             return res.status(400).json({ error: "Invalid email or password" });
 
-        const token = jwt.sign({ userId: user._id }, "secret_key", { expiresIn: "1h" });
+        const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: "1h" });
 
         res.json({
             message: "Login successful",
@@ -57,6 +58,7 @@ router.post("/login", async (req, res) => {
             }
         });
     } catch (error) {
+        console.log("error.message");
         res.status(500).json({ error: error.message });
     }
 });
